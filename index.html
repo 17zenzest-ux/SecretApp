@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#08111f">
+
+<title>SecretApp</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #08111f;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    padding: 20px;
+}
+
+.app {
+
+    width: 100%;
+
+    max-width: 460px;
+
+    margin: auto;
+}
+
+.screen {
+
+    display: none;
+}
+
+.screen.active {
+
+    display: block;
+}
+
+
+/* =========================
+   الرئيسية
+========================= */
+
+.home {
+
+    text-align: center;
+
+    padding-top: 55px;
+}
+
+.logo {
+
+    font-size: 65px;
+
+    margin-bottom: 12px;
+}
+
+h1 {
+
+    font-size: 32px;
+
+    margin: 0 0 8px;
+}
+
+.subtitle {
+
+    color: #94a3b8;
+
+    margin-bottom: 35px;
+}
+
+.main-button {
+
+    width: 100%;
+
+    min-height: 65px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #263952;
+
+    border-radius: 16px;
+
+    background: #13263d;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+.main-button:active,
+.action:active,
+.small-button:active {
+
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   العناوين
+========================= */
+
+h2 {
+
+    font-size: 25px;
+
+    margin-top: 20px;
+
+    margin-bottom: 8px;
+}
+
+.description {
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   العودة
+========================= */
+
+.back {
+
+    width: auto;
+
+    min-height: auto;
+
+    padding: 8px 0;
+
+    background: transparent;
+
+    border: none;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   الحقول
+========================= */
+
+label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+textarea,
+input {
+
+    width: 100%;
+
+    background: #0d192a;
+
+    color: white;
+
+    border: 1px solid #263952;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+}
+
+textarea {
+
+    height: 150px;
+
+    padding: 15px;
+
+    resize: none;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+input {
+
+    height: 52px;
+
+    padding: 0 15px;
+
+    margin-bottom: 12px;
+}
+
+textarea:focus,
+input:focus {
+
+    border-color: #38bdf8;
+}
+
+
+/* =========================
+   كلمة السر
+========================= */
+
+.password-box {
+
+    position: relative;
+}
+
+.password-box input {
+
+    padding-left: 55px;
+}
+
+.eye {
+
+    position: absolute;
+
+    left: 8px;
+
+    top: 0;
+
+    width: 45px;
+
+    height: 52px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    font-size: 20px;
+
+    margin: 0;
+}
+
+
+/* =========================
+   الأزرار
+========================= */
+
+.action {
+
+    width: 100%;
+
+    min-height: 55px;
+
+    margin-top: 8px;
+
+    margin-bottom: 12px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #0284c7;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+.small-button {
+
+    min-height: 48px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #263952;
+
+    border-radius: 13px;
+
+    background: #13263d;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   مجموعة أزرار
+========================= */
+
+.button-row {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+.button-row button {
+
+    flex: 1;
+}
+
+
+/* =========================
+   النتائج
+========================= */
+
+.result {
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    background: #101d30;
+
+    border: 1px solid #263952;
+
+    border-radius: 15px;
+}
+
+.result-title {
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.code {
+
+    background: #07101c;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    color: #bae6fd;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    direction: ltr;
+
+    text-align: left;
+
+    word-break: break-all;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+.message {
+
+    background: #07101c;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    color: #e2e8f0;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+}
+
+.info {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-top: 10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =====================================
+     الصفحة الرئيسية
+===================================== -->
+
+<section id="home"
+class="screen active home">
+
+<div class="logo">
+🔐
+</div>
+
+<h1>
+SecretApp
+</h1>
+
+<p class="subtitle">
+رسائلك... لكن مشفرة
+</p>
+
+<button id="openEncrypt"
+class="main-button">
+
+🔒 تشفير رسالة
+
+</button>
+
+<button id="openDecrypt"
+class="main-button">
+
+🔓 فك شفرة
+
+</button>
+
+</section>
+
+
+
+<!-- =====================================
+     شاشة التشفير
+===================================== -->
+
+<section id="encrypt"
+class="screen">
+
+<button id="backEncrypt"
+class="back">
+
+← العودة
+
+</button>
+
+<h2>
+🔒 تشفير رسالة
+</h2>
+
+<p class="description">
+
+اكتب رسالتك، ثم استخدم كلمة سر مشتركة مع الشخص الآخر.
+
+</p>
+
+
+<label>
+الرسالة
+</label>
+
+<textarea
+id="message"
+placeholder="اكتب رسالتك هنا..."></textarea>
+
+
+<label>
+🔑 كلمة السر
+</label>
+
+<div class="password-box">
+
+<input
+id="encryptPassword"
+type="password"
+placeholder="أدخل كلمة السر">
+
+<button
+id="showEncryptPassword"
+class="eye">
+
+👁️
+
+</button>
+
+</div>
+
+
+<div class="button-row">
+
+<button
+id="generatePassword"
+class="small-button">
+
+🎲 توليد مفتاح
+
+</button>
+
+<button
+id="clearEncrypt"
+class="small-button">
+
+🗑️ مسح
+
+</button>
+
+</div>
+
+
+<button
+id="encryptButton"
+class="action">
+
+🔒 تحويل إلى شفرة
+
+</button>
+
+
+<div
+id="encryptResult"
+class="result"
+style="display:none;">
+
+<div class="result-title">
+
+🔐 الشفرة الناتجة
+
+</div>
+
+<div
+id="encryptedText"
+class="code">
+</div>
+
+
+<div class="button-row">
+
+<button
+id="copyButton"
+class="small-button">
+
+📋 نسخ
+
+</button>
+
+<button
+id="shareButton"
+class="small-button">
+
+📤 مشاركة
+
+</button>
+
+</div>
+
+<p class="info">
+
+أرسل الشفرة للشخص الآخر، وأرسل له كلمة السر عبر وسيلة آمنة مختلفة.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     شاشة فك الشفرة
+===================================== -->
+
+<section id="decrypt"
+class="screen">
+
+<button id="backDecrypt"
+class="back">
+
+← العودة
+
+</button>
+
+<h2>
+🔓 فك الشفرة
+</h2>
+
+<p class="description">
+
+الصق الشفرة وأدخل نفس كلمة السر المستخدمة عند التشفير.
+
+</p>
+
+
+<label>
+الشفرة
+</label>
+
+<textarea
+id="encryptedInput"
+placeholder="الصق الشفرة هنا..."></textarea>
+
+
+<div class="button-row">
+
+<button
+id="pasteButton"
+class="small-button">
+
+📋 لصق الشفرة
+
+</button>
+
+<button
+id="clearDecrypt"
+class="small-button">
+
+🗑️ مسح
+
+</button>
+
+</div>
+
+
+<label>
+🔑 كلمة السر
+</label>
+
+<div class="password-box">
+
+<input
+id="decryptPassword"
+type="password"
+placeholder="أدخل كلمة السر">
+
+<button
+id="showDecryptPassword"
+class="eye">
+
+👁️
+
+</button>
+
+</div>
+
+
+<button
+id="decryptButton"
+class="action">
+
+🔓 فك الشفرة
+
+</button>
+
+
+<div
+id="decryptResult"
+class="result"
+style="display:none;">
+
+<div class="result-title">
+
+📝 الرسالة الأصلية
+
+</div>
+
+<div
+id="decryptedText"
+class="message">
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+
+<script>
+
+
+// =================================================
+// أدوات Base64
+// =================================================
+
+function bytesToBase64(bytes) {
+
+    let binary = "";
+
+    for (
+        let i = 0;
+        i < bytes.length;
+        i++
+    ) {
+
+        binary += String.fromCharCode(
+            bytes[i]
+        );
+
+    }
+
+    return btoa(binary);
+}
+
+
+function base64ToBytes(base64) {
+
+    const binary =
+        atob(base64);
+
+    const bytes =
+        new Uint8Array(
+            binary.length
+        );
+
+    for (
+        let i = 0;
+        i < binary.length;
+        i++
+    ) {
+
+        bytes[i] =
+            binary.charCodeAt(i);
+
+    }
+
+    return bytes;
+}
+
+
+
+// =================================================
+// إنشاء مفتاح AES-256
+// =================================================
+
+async function createEncryptionKey(
+    password,
+    salt
+) {
+
+    const encoder =
+        new TextEncoder();
+
+    const passwordBytes =
+        encoder.encode(password);
+
+    const baseKey =
+        await crypto.subtle.importKey(
+
+            "raw",
+
+            passwordBytes,
+
+            {
+                name: "PBKDF2"
+            },
+
+            false,
+
+            ["deriveKey"]
+
+        );
+
+
+    return crypto.subtle.deriveKey(
+
+        {
+
+            name: "PBKDF2",
+
+            salt: salt,
+
+            iterations: 150000,
+
+            hash: "SHA-256"
+
+        },
+
+        baseKey,
+
+        {
+
+            name: "AES-GCM",
+
+            length: 256
+
+        },
+
+        false,
+
+        [
+            "encrypt",
+            "decrypt"
+        ]
+
+    );
+
+}
+
+
+
+// =================================================
+// التنقل
+// =================================================
+
+function showScreen(screen) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+    screen.classList.add("active");
+
+}
+
+
+document
+    .getElementById("openEncrypt")
+    .onclick = function() {
+
+        showScreen(
+            document.getElementById("encrypt")
+        );
+
+    };
+
+
+document
+    .getElementById("openDecrypt")
+    .onclick = function() {
+
+        showScreen(
+            document.getElementById("decrypt")
+        );
+
+    };
+
+
+document
+    .getElementById("backEncrypt")
+    .onclick = function() {
+
+        showScreen(
+            document.getElementById("home")
+        );
+
+    };
+
+
+document
+    .getElementById("backDecrypt")
+    .onclick = function() {
+
+        showScreen(
+            document.getElementById("home")
+        );
+
+    };
+
+
+
+// =================================================
+// إظهار كلمة السر
+// =================================================
+
+document
+    .getElementById("showEncryptPassword")
+    .onclick = function() {
+
+        const input =
+            document.getElementById(
+                "encryptPassword"
+            );
+
+        if (
+            input.type === "password"
+        ) {
+
+            input.type = "text";
+
+            this.textContent = "🙈";
+
+        } else {
+
+            input.type = "password";
+
+            this.textContent = "👁️";
+
+        }
+
+    };
+
+
+document
+    .getElementById("showDecryptPassword")
+    .onclick = function() {
+
+        const input =
+            document.getElementById(
+                "decryptPassword"
+            );
+
+        if (
+            input.type === "password"
+        ) {
+
+            input.type = "text";
+
+            this.textContent = "🙈";
+
+        } else {
+
+            input.type = "password";
+
+            this.textContent = "👁️";
+
+        }
+
+    };
+
+
+
+// =================================================
+// توليد كلمة سر عشوائية
+// =================================================
+
+document
+    .getElementById("generatePassword")
+    .onclick = function() {
+
+        const bytes =
+            crypto.getRandomValues(
+                new Uint8Array(16)
+            );
+
+        const password =
+            bytesToBase64(bytes)
+            .replace(/[^a-zA-Z0-9]/g, "")
+            .substring(0, 16);
+
+        document
+            .getElementById(
+                "encryptPassword"
+            )
+            .value = password;
+
+        alert(
+            "🔑 تم إنشاء مفتاح قوي.\n\nاحفظه جيدًا قبل إرساله."
+        );
+
+    };
+
+
+
+// =================================================
+// التشفير
+// =================================================
+
+document
+    .getElementById("encryptButton")
+    .onclick = async function() {
+
+        const message =
+            document
+                .getElementById("message")
+                .value;
+
+        const password =
+            document
+                .getElementById("encryptPassword")
+                .value;
+
+        if (!message.trim()) {
+
+            alert(
+                "⚠️ اكتب الرسالة أولًا."
+            );
+
+            return;
+        }
+
+        if (password.length < 4) {
+
+            alert(
+                "⚠️ كلمة السر يجب أن تكون 4 أحرف على الأقل."
+            );
+
+            return;
+        }
+
+
+        try {
+
+            const encoder =
+                new TextEncoder();
+
+
+            const salt =
+                crypto.getRandomValues(
+                    new Uint8Array(16)
+                );
+
+
+            const iv =
+                crypto.getRandomValues(
+                    new Uint8Array(12)
+                );
+
+
+            const key =
+                await createEncryptionKey(
+                    password,
+                    salt
+                );
+
+
+            const encrypted =
+                await crypto.subtle.encrypt(
+
+                    {
+                        name: "AES-GCM",
+                        iv: iv
+                    },
+
+                    key,
+
+                    encoder.encode(message)
+
+                );
+
+
+            const packageData = {
+
+                v: 1,
+
+                algorithm:
+                    "AES-256-GCM",
+
+                salt:
+                    bytesToBase64(salt),
+
+                iv:
+                    bytesToBase64(iv),
+
+                data:
+                    bytesToBase64(
+                        new Uint8Array(
+                            encrypted
+                        )
+                    )
+
+            };
+
+
+            const finalCode =
+                btoa(
+                    JSON.stringify(
+                        packageData
+                    )
+                );
+
+
+            document
+                .getElementById(
+                    "encryptedText"
+                )
+                .textContent =
+                finalCode;
+
+
+            document
+                .getElementById(
+                    "encryptResult"
+                )
+                .style.display =
+                "block";
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "❌ حدث خطأ أثناء التشفير."
+            );
+
+        }
+
+    };
+
+
+
+// =================================================
+// نسخ الشفرة
+// =================================================
+
+document
+    .getElementById("copyButton")
+    .onclick = async function() {
+
+        const text =
+            document
+                .getElementById(
+                    "encryptedText"
+                )
+                .textContent;
+
+        if (!text) {
+
+            return;
+
+        }
+
+        try {
+
+            await navigator
+                .clipboard
+                .writeText(text);
+
+            alert(
+                "✅ تم نسخ الشفرة."
+            );
+
+        } catch (error) {
+
+            alert(
+                "⚠️ تعذر النسخ تلقائيًا."
+            );
+
+        }
+
+    };
+
+
+
+// =================================================
+// مشاركة الشفرة
+// =================================================
+
+document
+    .getElementById("shareButton")
+    .onclick = async function() {
+
+        const text =
+            document
+                .getElementById(
+                    "encryptedText"
+                )
+                .textContent;
+
+        if (!text) {
+
+            return;
+
+        }
+
+
+        if (
+            navigator.share
+        ) {
+
+            try {
+
+                await navigator.share({
+
+                    title:
+                        "SecretApp",
+
+                    text:
+                        "🔐 رسالة مشفرة:\n\n"
+                        + text
+
+                });
+
+            } catch (error) {
+
+                console.log(
+                    "تم إلغاء المشاركة."
+                );
+
+            }
+
+        } else {
+
+            try {
+
+                await navigator
+                    .clipboard
+                    .writeText(text);
+
+                alert(
+                    "📋 جهازك لا يدعم المشاركة المباشرة، لذلك تم نسخ الشفرة."
+                );
+
+            } catch (error) {
+
+                alert(
+                    "⚠️ تعذر المشاركة."
+                );
+
+            }
+
+        }
+
+    };
+
+
+
+// =================================================
+// لصق الشفرة
+// =================================================
+
+document
+    .getElementById("pasteButton")
+    .onclick = async function() {
+
+        try {
+
+            const text =
+                await navigator
+                    .clipboard
+                    .readText();
+
+            document
+                .getElementById(
+                    "encryptedInput"
+                )
+                .value = text;
+
+        } catch (error) {
+
+            alert(
+                "⚠️ لم يسمح المتصفح بالوصول إلى الحافظة. استخدم اللصق العادي من لوحة المفاتيح."
+            );
+
+        }
+
+    };
+
+
+
+// =================================================
+// فك التشفير
+// =================================================
+
+document
+    .getElementById("decryptButton")
+    .onclick = async function() {
+
+        const code =
+            document
+                .getElementById(
+                    "encryptedInput"
+                )
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById(
+                    "decryptPassword"
+                )
+                .value;
+
+
+        if (!code) {
+
+            alert(
+                "⚠️ الصق الشفرة أولًا."
+            );
+
+            return;
+        }
+
+
+        if (!password) {
+
+            alert(
+                "⚠️ أدخل كلمة السر."
+            );
+
+            return;
+        }
+
+
+        try {
+
+            const json =
+                atob(code);
+
+
+            const packageData =
+                JSON.parse(json);
+
+
+            if (
+                packageData.v !== 1
+            ) {
+
+                throw new Error(
+                    "نسخة غير مدعومة"
+                );
+
+            }
+
+
+            const salt =
+                base64ToBytes(
+                    packageData.salt
+                );
+
+
+            const iv =
+                base64ToBytes(
+                    packageData.iv
+                );
+
+
+            const encryptedData =
+                base64ToBytes(
+                    packageData.data
+                );
+
+
+            const key =
+                await createEncryptionKey(
+                    password,
+                    salt
+                );
+
+
+            const decrypted =
+                await crypto.subtle.decrypt(
+
+                    {
+                        name: "AES-GCM",
+                        iv: iv
+                    },
+
+                    key,
+
+                    encryptedData
+
+                );
+
+
+            const decoder =
+                new TextDecoder();
+
+
+            const message =
+                decoder.decode(
+                    decrypted
+                );
+
+
+            document
+                .getElementById(
+                    "decryptedText"
+                )
+                .textContent =
+                message;
+
+
+            document
+                .getElementById(
+                    "decryptResult"
+                )
+                .style.display =
+                "block";
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "❌ كلمة السر خاطئة أو الشفرة غير صالحة."
+            );
+
+        }
+
+    };
+
+
+
+// =================================================
+// مسح شاشة التشفير
+// =================================================
+
+document
+    .getElementById("clearEncrypt")
+    .onclick = function() {
+
+        document
+            .getElementById("message")
+            .value = "";
+
+        document
+            .getElementById("encryptPassword")
+            .value = "";
+
+        document
+            .getElementById("encryptedText")
+            .textContent = "";
+
+        document
+            .getElementById("encryptResult")
+            .style.display =
+            "none";
+
+    };
+
+
+
+// =================================================
+// مسح شاشة فك التشفير
+// =================================================
+
+document
+    .getElementById("clearDecrypt")
+    .onclick = function() {
+
+        document
+            .getElementById("encryptedInput")
+            .value = "";
+
+        document
+            .getElementById("decryptPassword")
+            .value = "";
+
+        document
+            .getElementById("decryptedText")
+            .textContent = "";
+
+        document
+            .getElementById("decryptResult")
+            .style.display =
+            "none";
+
+    };
+
+</script>
+
+</body>
+
+  </html>
