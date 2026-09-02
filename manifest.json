@@ -1,0 +1,13 @@
+{
+  "name": "SecretApp",
+  "short_name": "SecretApp",
+  "description": "تطبيق لتشفير وفك تشفير الرسائل بشكل آمن.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0f1115",
+  "background_color": "#0f1115"
+}
